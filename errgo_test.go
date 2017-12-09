@@ -4,7 +4,6 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/dc0d/errgo/sentinel"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -26,14 +25,14 @@ func removeNumbers(s string) string {
 func TestMarker(t *testing.T) {
 	assert := assert.New(t)
 
-	m := NewMarker(sentinel.Errorf("BOO"))
+	m := NewMarker(errorf("BOO"))
 	assert.Error(m)
 	assert.Contains(removeNumbers(m.Error()), removeNumbers(MarkHere()))
 }
 
 func TestErrorMarkf(t *testing.T) {
 	assert := assert.New(t)
-	cause := sentinel.Errorf("BOO %d", 10)
+	cause := errorf("BOO %d", 10)
 	em := ErrorMarkf("BOO %d", 10)
 	if c, ok := em.(interface {
 		Cause() error

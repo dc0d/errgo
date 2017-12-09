@@ -5,8 +5,6 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
-
-	"github.com/dc0d/errgo/sentinel"
 )
 
 //-----------------------------------------------------------------------------
@@ -14,7 +12,7 @@ import (
 // ErrorMarkf .
 func ErrorMarkf(format string, a ...interface{}) error {
 	name := makeMarker(markerFormat)
-	cause := sentinel.Errorf(format, a...)
+	cause := errorf(format, a...)
 	return &Marker{
 		name: name,
 		err:  cause,

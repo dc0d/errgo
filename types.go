@@ -1,5 +1,7 @@
 package errgo
 
+import "fmt"
+
 //-----------------------------------------------------------------------------
 
 const markerFormat = "%s/%02d:%s()"
@@ -35,5 +37,12 @@ func NewMarker(cause error) error {
 		err:  cause,
 	}
 }
+
+//-----------------------------------------------------------------------------
+
+type sentinelErr string
+
+func (v sentinelErr) Error() string                { return string(v) }
+func errorf(format string, a ...interface{}) error { return sentinelErr(fmt.Sprintf(format, a...)) }
 
 //-----------------------------------------------------------------------------
