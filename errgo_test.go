@@ -55,38 +55,3 @@ func TestMarkerf(t *testing.T) {
 	assert.Contains(s1, "errgo/errgo_test.go")
 	assert.Contains(s1, "github.com/dc0d/errgo.TestMarkerf() cnt 10")
 }
-
-// func removeNumbers(s string) string {
-// 	rep := strings.NewReplacer(
-// 		"1", "_",
-// 		"2", "_",
-// 		"3", "_",
-// 		"4", "_",
-// 		"5", "_",
-// 		"6", "_",
-// 		"7", "_",
-// 		"8", "_",
-// 		"9", "_",
-// 		"0", "_")
-// 	return rep.Replace(s)
-// }
-
-// func TestMarker(t *testing.T) {
-// 	assert := assert.New(t)
-
-// 	m := NewMarker(errorf("BOO"))
-// 	assert.Error(m)
-// 	assert.Contains(removeNumbers(m.Error()), removeNumbers(MarkHere()))
-// }
-
-// func TestErrorMarkf(t *testing.T) {
-// 	assert := assert.New(t)
-// 	cause := errorf("BOO %d", 10)
-// 	em := ErrorMarkf("BOO %d", 10)
-// 	if c, ok := em.(interface {
-// 		Cause() error
-// 	}); ok {
-// 		assert.Equal(cause, c.Cause())
-// 	}
-// 	assert.Contains(removeNumbers(em.Error()), removeNumbers(MarkHere()))
-// }

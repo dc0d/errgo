@@ -6,8 +6,6 @@ import (
 	"runtime"
 )
 
-//-----------------------------------------------------------------------------
-
 // Here info about code location with a string representation formatted as
 // <dir>/<file>.go@<line>:<package>.<function>()
 func Here(skip ...int) Loc {
