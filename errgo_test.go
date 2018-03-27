@@ -40,6 +40,21 @@ func TestMarker(t *testing.T) {
 	assert.Contains(c.Cause().Error(), "TEST")
 }
 
+func TestMarkerLoc(t *testing.T) {
+	assert := assert.New(t)
+
+	err := Mark(fmt.Errorf("TEST"))
+
+	c, ok := err.(interface {
+		Loc() Loc
+	})
+	assert.True(ok)
+
+	s1 := c.Loc().String()
+	assert.Contains(s1, "errgo/errgo_test.go")
+	assert.Contains(s1, "github.com/dc0d/errgo.TestMarkerLoc()")
+}
+
 func TestMarkerNil(t *testing.T) {
 	assert := assert.New(t)
 

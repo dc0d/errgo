@@ -68,6 +68,9 @@ func (m *marker) Error() string {
 // Cause implements Causer interface
 func (m *marker) Cause() error { return m.err }
 
+// Loc returns info on code location
+func (m *marker) Loc() Loc { return m.loc }
+
 // Mark ...
 func Mark(cause error) error {
 	if cause == nil {
